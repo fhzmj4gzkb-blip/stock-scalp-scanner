@@ -195,5 +195,15 @@ st.plotly_chart(vol_fig, use_container_width=True)
 
 st.caption("This is a rule-based AI-style scanner, not financial advice. Always use stop loss.")
 
+st.write("## 📰 Semiconductor Market News")
+
+news_feed = parse(
+    "https://feeds.finance.yahoo.com/rss/2.0/headline?s=SOXX,NVDA,AMD,INTC,TSM&region=US&lang=en-US"
+)
+
+for entry in news_feed.entries[:5]:
+    st.markdown(f"### [{entry.title}]({entry.link})")
+
+
 time.sleep(30)
 st.rerun()

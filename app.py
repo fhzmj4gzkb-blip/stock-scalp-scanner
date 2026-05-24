@@ -232,10 +232,10 @@ def relative_strength():
     return pd.DataFrame(rows).sort_values("Recent % Change", ascending=False)
 
 
-df = fetch_data(ticker, timeframe)
+df = fetch_data(ticker, timeframe, days=10)
 
 if df.empty:
-    st.error("No data found. Market may be closed, or your API plan may not support this request.")
+    st.error("No candle data found. Try QQQ or NVDA, use 5-min timeframe, or check if your Polygon plan supports intraday data.")
     st.stop()
 
 latest = df.iloc[-1]
